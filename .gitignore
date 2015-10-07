@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .gradle
 build/
 
@@ -15,3 +16,17 @@ test-output/
 .classpath
 .project
 src/main/resources/static/bower_components/
+=======
+*.class
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+>>>>>>> 6e07d605ad1082344639eedbd199c1471519ffab
