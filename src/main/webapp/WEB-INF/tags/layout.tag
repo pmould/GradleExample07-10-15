@@ -2,6 +2,7 @@
 <%@ tag description="Overall Page template" pageEncoding="UTF-8"%>
 <%@ attribute name="header" fragment="true"%>
 <%@ attribute name="footer" fragment="true"%>
+<c:set var="context" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,6 +42,33 @@
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="#">Home</a></li>
+					  <li class="dropdown">
+			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Employees <span class="caret"></span></a>
+			          <ul class="dropdown-menu">
+						<li><a href="<c:url value='/employees'/>"> View Employees</a></li>
+			            <li><a href="<c:url value='/employees/new'/>"> Add New Employee</a></li>
+			            <li role="separator" class="divider"></li>
+			            <li><a href="/employees/reports">Employee Reports</a></li>
+			          </ul>
+			        </li>
+					  <li class="dropdown">
+			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manage Branches <span class="caret"></span></a>
+			          <ul class="dropdown-menu">
+						<li><a href="<c:url value='/branches'/>"> View Branches</a></li>
+			            <li><a href="<c:url value='/branches/new'/>"> Add New Branch</a></li>
+			            <li role="separator" class="divider"></li>
+			            <li><a href="/branches/reports">Branch Reports</a></li>
+			          </ul>
+			        </li>
+					  <li class="dropdown">
+			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">View Branches <span class="caret"></span></a>
+			          <ul class="dropdown-menu">
+						<li><a href="<c:url value=''/>"> </a></li>
+			            <li><a href="<c:url value=''/>"></a></li>
+			            <li role="separator" class="divider"></li>
+			            <li><a href="/employee/reports">Branch Reports</a></li>
+			          </ul>
+			        </li>
 					<li><a href="#about">About</a></li>
 					<li><a href="#contact">Contact</a></li>
 				</ul>
@@ -62,7 +90,7 @@
 		</footer>
 	</div>
 	<script
-		src="<c:url value='/bower_components/jquery/dist/js/jquery.js' />"></script>
+		src="<c:url value='/bower_components/jquery/dist/jquery.js' />"></script>
 	<script
 		src="<c:url value='/bower_components/bootstrap/dist/js/bootstrap.js' />"></script>
 </body>

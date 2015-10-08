@@ -40,6 +40,7 @@ public class EmployeeController {
 
         List<Employee> employees = employeeService.findAllEmployees();
         model.addAttribute("employees", employees);
+        
         return "employee/allemployees";
     }
     /**
@@ -52,6 +53,8 @@ public class EmployeeController {
         Employee employee = new Employee();
         model.addAttribute("employee", employee);
         model.addAttribute("edit", false);
+        List<Branch> branches = branchService.findAllBranches();
+        model.addAttribute("branches", branches);
         return "employee/registration";
     }
     

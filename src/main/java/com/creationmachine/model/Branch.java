@@ -10,15 +10,19 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 
 @Entity
 public class Branch {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int branchId;
 	
 	@NotNull
@@ -30,6 +34,11 @@ public class Branch {
 	@Size(min=0, max=45)
 	@Column(name="BRANCH_LOC")
 	private String branchLoc;
+	
+	@OneToOne
+	@PrimaryKeyJoinColumn
+	@NotFound(action=NotFoundAction.IGNORE)
+	private Employee employee;
 
 	
 	public int getBranchId() {
@@ -69,5 +78,15 @@ public class Branch {
 	public String toString()
 	{
 	    return "Branch [id=" + branchId + ", branchName=" + branchName + ", branchLoc=" + branchLoc + "]";
+	}
+
+
+	public Employee getEmployee() {
+		return employee;
+	}
+
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
 	}
 }

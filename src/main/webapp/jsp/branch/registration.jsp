@@ -5,13 +5,13 @@
 
 <t:layout>
 	<jsp:attribute name="header">
-      <h2>Registration Form</h2>
+      <h2>Branch Registration Form</h2>
     </jsp:attribute>
 	<jsp:attribute name="footer">
     </jsp:attribute>
 	<jsp:body>
-	        <form:form method="POST" modelAttribute="employee">
-	        <form:input type="hidden" path="id" id="id" />
+	        <form:form method="POST" modelAttribute="branch">
+	        <form:input type="hidden" path="branchId" id="id" />
 	        <table>
 	             <tr>
                     <td><label for="branch">Branch Name: </label></td>
@@ -19,7 +19,7 @@
                     <td><form:errors path="branchName" cssClass="error" /></td>
                 </tr>
 	            <tr>
-	                <td><label for="branchLoc">Last Name: </label></td>
+	                <td><label for="branchLoc">Branch Location: </label></td>
 	                <td><form:input path="branchLoc" id="lastName" /></td>
 	                <td><form:errors path="branchLoc" cssClass="error" /></td>
 	            </tr>
@@ -40,12 +40,5 @@
 	    <a href="<c:url value='/branches' />">List of All Branches</a>
     </jsp:body>
 </t:layout>
-
-
-
-
-
-
-
 
 

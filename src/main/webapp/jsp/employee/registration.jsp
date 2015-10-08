@@ -52,11 +52,19 @@
 	                <td><form:input path="role" id="role" /></td>
 	                <td><form:errors path="role" cssClass="error" /></td>
 	            </tr>
-		<%-- 	 <tr>
-	                <td><label for="dept">Branch: </label></td>
-	                <td><form:input path="branch" id="branch" /></td>
-	                <td><form:errors path="branch" cssClass="error" /></td>
-	            </tr>	
+<%-- 	           <tr>
+	                <td><label for="branchId">Branch: </label></td>
+	                <td><form:select path="branch.branchId">
+	                	<form:option value="">Select Branch: </form:option>
+    					<c:forEach items="${branches}" var="branch">
+          					<form:option value="${branch.branchId}">${branch.branchName}</form:option>
+        				</c:forEach>
+						</form:select>
+					</td>
+	                <td><form:errors path="branch.branchId" cssClass="error" /></td>
+	            </tr>	 --%>
+
+	            <%-- 
            <tr>
 	                <td><label for="dept">Department: </label></td>
 	                <td><form:input path="department" id="dept" /></td>

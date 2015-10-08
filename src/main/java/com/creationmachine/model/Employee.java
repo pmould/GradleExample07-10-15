@@ -11,11 +11,13 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.persistence.Column;
+
 
 
 import org.hibernate.annotations.NotFound;
@@ -32,7 +34,7 @@ public class Employee
 {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     
     @NotNull
@@ -52,25 +54,31 @@ public class Employee
  
     //@ManyToOne
     //@JoinTable(name="department_id")
-	//@NotFound(action=NotFoundAction.IGNORE)
+	@NotFound(action=NotFoundAction.IGNORE)
     @Size(min = 3, max = 20)
-    @Column(name = "Department", nullable = false)
+    @Column(name = "Department", nullable = true)
     private String department;
 
-    //@ManyToOne
+/*    //@ManyToOne
     //@NotEmpty
     @Size(min = 3, max = 20)
     @Column(name = "branch", unique = true, nullable = false)
-    private String branch;
+    private String branch;*/
 
+    @OneToOne(mappedBy="employee")
+    @NotFound(action=NotFoundAction.IGNORE)
+   // @Size(min = 3, max = 20)
+   /* @Column(name = "branch", unique = true, nullable = false)*/
+    private Branch branch;
+    
 	@NotNull
     @Size(min = 3, max = 50)
     @Column(name = "EMAIL", unique = true, nullable = false)
     private String email;
 
-    @NotNull
+    //@NotNull
     @DateTimeFormat(pattern = "dd/MM/yyyy")
-    @Column(name = "JOINING_DATE", nullable = false)
+    @Column(name = "JOINING_DATE", nullable = true)
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
     private LocalDate joiningDate;
 
@@ -173,14 +181,20 @@ public class Employee
 		this.department = department;
 	}
 
+	public Branch getBranch() {
+		return branch;
+	}
 
-	public String getBranch() {
+	public void setBranch(Branch branch) {
+		this.branch = branch;
+	}
+/*	public String getBranch() {
 		return branch;
 	}
 
 	public void setBranch(String branch) {
 		this.branch = branch;
-	}
+	}*/
 
 	@Override
     public int hashCode()

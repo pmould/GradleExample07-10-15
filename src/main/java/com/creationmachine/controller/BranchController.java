@@ -65,7 +65,7 @@ public class BranchController {
         branchService.saveBranch(branch);
 
         model.addAttribute("success", "Branch " + branch.getBranchName() + " " + branch.getBranchLoc() + " registered successfully");
-        return "success";
+        return "branch/success";
     }
 
     /*
